@@ -1,0 +1,16 @@
+Design a the backend of a todo list app using Django.
+1. Define a todo model with the following fields: 
+  id (auto-generated key)
+  title (string, require)
+  completed (boolean, default: false)
+  created_at (auto-filled timestamp)
+2. Implement CRUD operations
+  GET List all todos
+  POST Create a new todo
+  GET Retrieve a todo by ID
+  PATCH Update a todo by ID
+  DELETE Delete a todo by ID
+3. Use serializers to convert between JSON and model objects
+4. Include error handling for nonexistent ids and empty titles
+5. Write a readme file explaining the app
+6. Push the code to backend folder and mark the task as completed on ClickUp

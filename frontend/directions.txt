@@ -1,0 +1,16 @@
+Design a the frontend of a todo list app using ReactNative.
+1. Create a simple interface with a input, add button, and list of todo items
+2. Each todo should have the following:
+  id (auto-generated key)
+  title (string, required)
+  completed (booelan, default: false)
+  created_at (auto-filled timestamp)
+3. Implement CRUD operations
+  Add a todo to the list
+  Edit the title of an existing todo
+  Edit if a todo is completed or not
+  Delete a todo
+4. Add a local storage system so todo items are saved after the app is closed
+5. Include error handling for empty titles
+6. Write a readme file explaining the app
+7. Push the code to frontend folder and mark the task as completed on ClickUp
