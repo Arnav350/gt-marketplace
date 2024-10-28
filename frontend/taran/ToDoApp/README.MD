@@ -26,10 +26,6 @@ This is a simple To-Do app built with a clean UI using React Native. The app all
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/your-username/todo-app.git
-   ```
-
 2. Install dependencies:
 
    ```bash
