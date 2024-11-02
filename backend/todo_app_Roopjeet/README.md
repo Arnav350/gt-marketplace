@@ -12,7 +12,8 @@ When using Django, the domain by default would be http://localhost:8000/ so the 
 
 Receive the Response: The user will receive a JSON response containing a list of all todos.
 If there are todos, the response might look like this:
-`[
+```json
+[
   {
     "id": 1,
     "title": "Buy groceries",
@@ -25,7 +26,8 @@ If there are todos, the response might look like this:
     "completed": true,
     "created_at": "2024-10-31T09:15:42Z"
   }
-]`
+]
+```
 
 ## **2. How would a user CREATE new todos?**
 
@@ -40,13 +42,14 @@ When using Django, the domain by default would be http://localhost:8000/ so the 
 
 `"Content-Type: application/json"` is used to tell the api that our data is in json format
 If the creation is successful, the response might look like this:
-`{
+```json
+{
   "id": 3,
   "title": "Learn Django",
   "completed": false,
   "created_at": "2024-10-31T12:45:00Z"
 }
-`
+```
 
 ## **3. How would a user GET a Todo by ID?**
 
@@ -61,13 +64,14 @@ When using Django, the domain by default would be http://localhost:8000/ so the 
 `curl -X GET http://localhost:8000/api/todos/5/`
 
 If the todo with the given id exists, the server will return a response with the details of the todo item in JSON format, for example:
-`{
+```json
+{
   "id": 5,
   "title": "Finish Django project",
   "completed": false,
   "created_at": "2024-10-31T10:15:30Z"
 }
-`
+```
 If the todo with the given id does not exist, the server will return a `404 Not Found` response
 
 ## **4. How would a user UPDATE a todo by ID?** 
@@ -82,13 +86,14 @@ When using Django, the domain by default would be http://localhost:8000/ so the 
 `curl -X PATCH http://localhost:8000/api/todos/5/ -H "Content-Type: application/json" -d '{"completed": true}'`
 
 If the update is successful, the response might look like:
-`{
+```json
+{
   "id": 5,
   "title": "Learn Django",
   "completed": true,
   "created_at": "2024-10-31T12:45:00Z"
 }
-`
+```
 If there’s a validation error (e.g., empty title), DRF would return a 400 Bad Request response with an error message
 
 ## **5. How would a user DELETE a todo by ID?** 
