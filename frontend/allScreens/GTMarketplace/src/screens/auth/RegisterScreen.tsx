@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Register from '../components/Register';
+import Register from '../../components/Register';
 
 const RegisterScreen = () => {
   return (

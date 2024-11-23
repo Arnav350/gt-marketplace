@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import SearchBar from '../components/SearchBar';
 
-// Define navigation stack types
+
 type MarketplaceStackParamList = {
   Marketplace: undefined;
   SearchItems: undefined;
@@ -19,7 +19,7 @@ const MarketplaceScreen: React.FC = () => {
   const navigation = useNavigation<MarketplaceScreenNavigationProp>();
 
   const handleFocus = () => {
-    // Navigate to SearchItemsScreen when search bar is focused
+
     navigation.navigate('SearchItems');
   };
 
@@ -27,8 +27,8 @@ const MarketplaceScreen: React.FC = () => {
     <View style={styles.container}>
       <SearchBar
         placeholder="Search for items..."
-        onSearch={() => {}} // Not used on this screen
-        onFocus={handleFocus} // Navigate when search bar is focused
+        onSearch={() => {}} 
+        onFocus={handleFocus} 
       />
       <Text style={styles.info}>Marketplace items will be displayed here...</Text>
     </View>
