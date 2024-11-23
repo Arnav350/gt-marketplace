@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import Register from '../components/Register';
 
 const RegisterScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Register Screen</Text>
+      <Register />
     </View>
   );
 };
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
 });
 
