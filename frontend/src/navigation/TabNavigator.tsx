@@ -1,10 +1,12 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 
 import HomeStack from "./HomeStack";
 import MarketplaceStack from "./MarketplaceStack";
+import CreateStack from "./CreateStack";
+import MessagesStack from "./MessagesStack";
+import ProfileStack from "./ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,8 +31,9 @@ const TabNavigator = () => (
   >
     <Tab.Screen name="HomeStack" component={HomeStack} />
     <Tab.Screen name="MarketplaceStack" component={MarketplaceStack} />
-    <Tab.Screen name="Profile" component={ProfileStack} />
-    <Tab.Screen name="Messages" component={MessagesStack} />
+    <Tab.Screen name="CreateStack" component={CreateStack} />
+    <Tab.Screen name="MessagesStack" component={MessagesStack} />
+    <Tab.Screen name="ProfileStack" component={ProfileStack} />
   </Tab.Navigator>
 );
 

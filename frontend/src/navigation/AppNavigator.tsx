@@ -1,31 +1,18 @@
-import React, { useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import TabNavigator from './TabNavigator';
-import LoginScreen from '../screens/auth/LoginScreen';
-import RegisterScreen from '../screens/auth/RegisterScreen';
+import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
-const Stack = createStackNavigator();
+import LoadingScreen from "../screens/loading/LoadingScreen";
+import TabNavigator from "./TabNavigator";
+import AuthStack from "./AuthStack";
 
-const AppNavigator: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Replace with actual auth logic
+const AppNavigator = () => {
+  const [currentUser, setCurrentUser] = useState(); // Replace with actual auth logic
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isAuthenticated ? (
-          // Main App Tabs
-          <Stack.Screen name="Main" component={TabNavigator} />
-        ) : (
-          // Auth Screens
-          <>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  if (currentUser === undefined) {
+    return <LoadingScreen />;
+  }
+
+  return <NavigationContainer>{currentUser ? <TabNavigator /> : <AuthStack />}</NavigationContainer>;
 };
 
 export default AppNavigator;

@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import SearchBar from '../components/SearchBar';
+import React from "react";
+import { View, StyleSheet, Text } from "react-native";
+import SearchBar from "../components/SearchBar";
 
-const TransactionDetailsScreen = () => {
+const TransactionScreen = () => {
   const handleSearch = (query: string) => {
     console.log(`Searching transactions: ${query}`);
     // api
@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: "#f8f9fa",
   },
   info: {
     marginTop: 16,
     fontSize: 16,
-    color: '#333',
+    color: "#333",
   },
 });
 
-export default TransactionDetailsScreen;
+export default TransactionScreen;
