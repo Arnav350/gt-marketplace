@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
 import LoadingScreen from "../screens/loading/LoadingScreen";
 import TabNavigator from "./TabNavigator";
 import AuthStack from "./AuthStack";
+import { AuthContext } from "../hooks/useAuth";
 
 const AppNavigator = () => {
-  const [currentUser, setCurrentUser] = useState(); // Replace with actual auth logic
+  const { currentUser } = useContext(AuthContext);
 
   if (currentUser === undefined) {
     return <LoadingScreen />;

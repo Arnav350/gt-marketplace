@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../../components/SearchBar";
 
 const TransactionScreen = () => {
   const handleSearch = (query: string) => {

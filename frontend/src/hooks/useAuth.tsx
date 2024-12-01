@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState } from "react";
 
 type User = any;
 
@@ -8,6 +8,7 @@ interface IProviderChildren {
 
 interface IAuthContext {
   currentUser: User | null | undefined;
+  setCurrentUser: Dispatch<SetStateAction<User | null | undefined>>;
 }
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -19,7 +20,7 @@ function AuthProvider({ children }: IProviderChildren) {
     setCurrentUser(currentUser);
   }, []);
 
-  return <AuthContext.Provider value={{ currentUser }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ currentUser, setCurrentUser }}>{children}</AuthContext.Provider>;
 }
 
 export default AuthProvider;
