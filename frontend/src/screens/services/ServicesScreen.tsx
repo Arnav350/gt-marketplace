@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const ItemScreen = () => {
+const ServicesScreen = () => {
   return (
     <View>
-      <Text>ItemScreen</Text>
+      <Text>ServicesScreen</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default ItemScreen;
+export default ServicesScreen;
