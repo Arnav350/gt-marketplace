@@ -13,9 +13,9 @@ const Checkbox = ({ checked, setChecked }: TProps) => {
   return (
     <TouchableOpacity onPress={(prevChecked) => setChecked(!prevChecked)}>
       {checked ? (
-        <MaterialCommunityIcons name="checkbox-marked" size={24} color={COLORS.secondaryDark} />
+        <MaterialCommunityIcons name="checkbox-marked" size={24} color={COLORS.primary} />
       ) : (
-        <MaterialCommunityIcons name="checkbox-blank-outline" size={24} color={COLORS.secondaryDark} />
+        <MaterialCommunityIcons name="checkbox-blank-outline" size={24} color={COLORS.borderGray} />
       )}
     </TouchableOpacity>
   );

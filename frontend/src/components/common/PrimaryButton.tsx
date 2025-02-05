@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-import { COLORS } from "../../constants/theme";
+import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 
 type TProps = {
   text: string;
@@ -18,10 +18,13 @@ const PrimaryButton = ({ text, handlePress }: TProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.primaryDark,
+    backgroundColor: COLORS.black,
+    borderRadius: 8,
   },
   text: {
     color: COLORS.white,
+    fontWeight: WEIGHTS.medium,
+    fontSize: SIZES.medium,
   },
 });
 

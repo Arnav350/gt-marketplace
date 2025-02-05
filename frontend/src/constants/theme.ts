@@ -1,11 +1,27 @@
 const COLORS = {
-  primaryDark: "#b3a369",
-  primary: "#d9b0b0",
-  primaryLight: "#f9f6e5",
-  secondaryDark: "#001d34",
-  secondary: "#003057",
-  secondaryLight: "#7d95a8",
-  white: "#f8f8f8",
+  primary: "#B3A369",
+  black: "#222222",
+  textGray: "#888888",
+  borderGray: "#D9D9D9",
+  smallGray: "#EEEEEE",
+  largeGray: "#F8F8F8",
+  white: "#FFFFFF",
 };
 
-export { COLORS };
+const SIZES = {
+  tiny: 12,
+  small: 14,
+  medium: 16,
+  large: 18,
+  subheader: 20,
+  header: 28,
+};
+
+const WEIGHTS = {
+  regular: "400",
+  medium: "500",
+  semiBold: "600",
+  bold: "700",
+} as const;
+
+export { COLORS, SIZES, WEIGHTS };

@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const PrivacyScreen = () => {
+const WishlistScreen = () => {
   return (
     <View>
-      <Text>PrivacyScreen</Text>
+      <Text>WishlistScreen</Text>
     </View>
   );
 };
 
-export default PrivacyScreen;
+export default WishlistScreen;
 
 const styles = StyleSheet.create({});
