@@ -18,8 +18,15 @@ const PrimaryButton = ({ text, handlePress }: TProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 56,
     backgroundColor: COLORS.black,
     borderRadius: 8,
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 4,
   },
   text: {
     color: COLORS.white,

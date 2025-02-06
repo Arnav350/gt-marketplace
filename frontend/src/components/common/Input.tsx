@@ -1,0 +1,67 @@
+import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { StyleSheet, TextInput, View } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import { COLORS } from "../../constants/theme";
+
+type TProps = {
+  placeholder: string;
+  text: string;
+  setText: Dispatch<SetStateAction<string>>;
+  leftIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
+  rightIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
+};
+
+const Input = ({ placeholder, text, setText, leftIcon, rightIcon }: TProps) => {
+  const [focused, setFocused] = useState<boolean>(false);
+
+  return (
+    <View style={[styles.container, focused && { backgroundColor: COLORS.alphaPrimary, borderColor: COLORS.primary }]}>
+      <View style={styles.leftContainer}>
+        {leftIcon && <MaterialCommunityIcons name={leftIcon} size={20} color={COLORS.black} style={styles.leftIcon} />}
+        <TextInput
+          placeholder={placeholder}
+          placeholderTextColor={COLORS.textGray}
+          style={styles.input}
+          value={text}
+          onChangeText={setText}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+        />
+      </View>
+      {rightIcon && <MaterialCommunityIcons name={rightIcon} size={20} color={COLORS.black} style={styles.rightIcon} />}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: 56,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: COLORS.borderGray,
+  },
+  leftContainer: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  leftIcon: {
+    marginLeft: 12,
+  },
+  input: {
+    flex: 1,
+    paddingHorizontal: 12,
+    height: 56,
+  },
+  rightIcon: {
+    marginRight: 12,
+  },
+});
+
+export default Input;
