@@ -1,6 +1,7 @@
 const COLORS = {
   primary: "#B3A369",
   alphaPrimary: "#B3A36940",
+  error: "#FF0000",
   black: "#222222",
   textGray: "#888888",
   borderGray: "#D9D9D9",
@@ -19,10 +20,10 @@ const SIZES = {
 };
 
 const WEIGHTS = {
-  regular: "400",
-  medium: "500",
-  semiBold: "600",
-  bold: "700",
-} as const;
+  regular: "Poppins-Regular",
+  medium: "Poppins-Medium",
+  semiBold: "Poppins-SemiBold",
+  bold: "Poppins-Bold",
+};
 
 export { COLORS, SIZES, WEIGHTS };

@@ -64,7 +64,7 @@ const TabNavigator = () => (
             style={{
               color: COLORS.black,
               fontSize: SIZES.tiny,
-              fontWeight: focused ? WEIGHTS.semiBold : WEIGHTS.regular,
+              fontFamily: focused ? WEIGHTS.semiBold : WEIGHTS.regular,
             }}
           >
             {labelMap[route.name]}

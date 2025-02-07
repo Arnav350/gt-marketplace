@@ -1,5 +1,5 @@
 import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View, ViewStyle } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { COLORS } from "../../constants/theme";
@@ -10,26 +10,40 @@ type TProps = {
   setText: Dispatch<SetStateAction<string>>;
   leftIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
   rightIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
+  iconPress?: () => void;
+  style?: ViewStyle;
 };
 
-const Input = ({ placeholder, text, setText, leftIcon, rightIcon }: TProps) => {
+const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress, style }: TProps) => {
   const [focused, setFocused] = useState<boolean>(false);
 
   return (
-    <View style={[styles.container, focused && { backgroundColor: COLORS.alphaPrimary, borderColor: COLORS.primary }]}>
+    <View
+      style={[
+        styles.container,
+        focused && { backgroundColor: COLORS.alphaPrimary, borderColor: COLORS.primary },
+        style,
+      ]}
+    >
       <View style={styles.leftContainer}>
         {leftIcon && <MaterialCommunityIcons name={leftIcon} size={20} color={COLORS.black} style={styles.leftIcon} />}
         <TextInput
           placeholder={placeholder}
           placeholderTextColor={COLORS.textGray}
-          style={styles.input}
+          selectionColor={COLORS.primary}
+          secureTextEntry={rightIcon === "eye" ? true : false}
           value={text}
           onChangeText={setText}
+          style={styles.input}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
       </View>
-      {rightIcon && <MaterialCommunityIcons name={rightIcon} size={20} color={COLORS.black} style={styles.rightIcon} />}
+      {rightIcon && (
+        <TouchableOpacity onPress={iconPress}>
+          <MaterialCommunityIcons name={rightIcon} size={20} color={COLORS.black} style={styles.rightIcon} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -56,11 +70,12 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    paddingHorizontal: 12,
+    paddingLeft: 12,
     height: 56,
   },
   rightIcon: {
-    marginRight: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 12,
   },
 });
 

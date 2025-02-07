@@ -1,16 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, ViewStyle } from "react-native";
 
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 
 type TProps = {
   text: string;
   handlePress: () => void;
+  style?: ViewStyle;
 };
 
-const PrimaryButton = ({ text, handlePress }: TProps) => {
+const PrimaryButton = ({ text, handlePress, style }: TProps) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={handlePress}>
+    <TouchableOpacity style={[styles.container, style]} onPress={handlePress}>
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
@@ -22,15 +23,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: 56,
+    width: "100%",
     backgroundColor: COLORS.black,
     borderRadius: 8,
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 4,
   },
   text: {
     color: COLORS.white,
-    fontWeight: WEIGHTS.medium,
+    fontFamily: WEIGHTS.medium,
     fontSize: SIZES.medium,
   },
 });
