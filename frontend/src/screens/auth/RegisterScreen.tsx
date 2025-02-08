@@ -6,6 +6,7 @@ import { StackScreenProps } from "@react-navigation/stack";
 import AppText from "../../components/common/AppText";
 import Input from "../../components/common/Input";
 import PrimaryButton from "../../components/common/PrimaryButton";
+import { TAuthStackParamsList } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 
 type TProps = StackScreenProps<TAuthStackParamsList, "Register">;

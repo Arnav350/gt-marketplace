@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -8,9 +9,9 @@ import CreateStack from "./CreateStack";
 import MessagesStack from "./MessagesStack";
 import ProfileStack from "./ProfileStack";
 import { COLORS, SIZES, WEIGHTS } from "../constants/theme";
-import { StyleSheet, Text, View } from "react-native";
+import { TTabStackParamsList } from "../constants/types";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<TTabStackParamsList>();
 
 const TabNavigator = () => (
   <Tab.Navigator

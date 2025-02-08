@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { StackScreenProps } from "@react-navigation/stack";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "../../components/common/AppText";
 import Input from "../../components/common/Input";
 import PrimaryButton from "../../components/common/PrimaryButton";
+import { TAuthStackParamsList } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 type TProps = StackScreenProps<TAuthStackParamsList, "RegisterProfile">;
 

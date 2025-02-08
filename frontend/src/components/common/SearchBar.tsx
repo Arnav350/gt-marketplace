@@ -7,18 +7,22 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 type TProps = {
   text: string;
   setText: Dispatch<SetStateAction<string>>;
+  handleSubmit: () => void;
 };
 
-const SearchBar = ({ text, setText }: TProps) => {
+const SearchBar = ({ text, setText, handleSubmit }: TProps) => {
   return (
     <View style={styles.container}>
       <MaterialCommunityIcons name="magnify" color={COLORS.textGray} size={24} />
       <TextInput
         placeholder="search"
         placeholderTextColor={COLORS.textGray}
+        selectionColor={COLORS.primary}
+        returnKeyType="search"
         value={text}
-        onChangeText={setText}
         style={styles.input}
+        onChangeText={setText}
+        onSubmitEditing={handleSubmit}
       />
     </View>
   );
@@ -26,6 +30,7 @@ const SearchBar = ({ text, setText }: TProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",

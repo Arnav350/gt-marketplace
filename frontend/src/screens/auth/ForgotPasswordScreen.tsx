@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { StackScreenProps } from "@react-navigation/stack";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "../../components/common/AppText";
 import Input from "../../components/common/Input";
 import PrimaryButton from "../../components/common/PrimaryButton";
+import { TAuthStackParamsList } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 
 type TProps = StackScreenProps<TAuthStackParamsList, "ForgotPassword">;
 
 const ForgotPasswordScreen = ({ navigation }: TProps) => {
+  const insets = useSafeAreaInsets();
+
   const [username, setUsername] = useState<string>("");
   const [emailError, setEmailError] = useState<string>("");
+
+  function handleBackPress() {
+    navigation.goBack();
+  }
 
   function handleSendPress() {}
 
@@ -22,6 +30,9 @@ const ForgotPasswordScreen = ({ navigation }: TProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={handleBackPress} style={[styles.backContainer, { top: 16 + insets.top }]}>
+        <MaterialCommunityIcons name="chevron-left" color={COLORS.black} size={40} />
+      </TouchableOpacity>
       <AppText style={styles.header}>Forgot Password</AppText>
       {emailError && <AppText style={styles.error}>{emailError}</AppText>}
       <Input placeholder="email" text={username} setText={setUsername} leftIcon="email" style={{ marginBottom: 8 }} />
@@ -44,6 +55,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
+  },
+  backContainer: {
+    position: "absolute",
+    top: 16,
+    left: 16,
   },
   header: {
     marginBottom: 40,
