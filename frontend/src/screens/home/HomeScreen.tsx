@@ -8,7 +8,7 @@ import AppText from "../../components/common/AppText";
 import SearchBar from "../../components/common/SearchBar";
 import Category from "../../components/home/Category";
 import Item from "../../components/home/Item";
-import { THomeStackParamsList } from "../../constants/types";
+import { THomeStackParamsList, TItem } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 import { categories } from "../../constants/init";
 import Discount from "../../components/home/Discount";
@@ -46,6 +46,26 @@ const HomeScreen = ({ navigation }: TProps) => {
     },
   ];
 
+  const item: TItem = {
+    id: "1",
+    seller_id: "2",
+    title: "Zara Classic White Shirt",
+    price: 28,
+    category: "Clothing",
+    condition: "Like New",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore sequi nemo magnam laborum libero deleniti earum quos placeat. Nostrum, nihil harum. Sapiente aperiam dicta saepe unde iure recusandae mollitia ex.",
+    address: "1234 Main St",
+    address_extra: "Apt 123",
+    size: "Medium",
+    score: 10,
+    created_at: new Date(),
+    buyer_id: "3",
+    price_sold: 28,
+    sold_at: new Date(),
+    completed_at: new Date(),
+  };
+
   const [search, setSearch] = useState<string>("");
 
   function handleStorePress() {
@@ -64,7 +84,9 @@ const HomeScreen = ({ navigation }: TProps) => {
     <SafeAreaView style={styles.container} edges={["top", "right", "left"]}>
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.headerContainer}>
-          <AppText style={styles.header}>Home</AppText>
+          <AppText style={styles.header} onPress={() => navigation.navigate("Item", item)}>
+            Home
+          </AppText>
           <View style={styles.iconsContainer}>
             <TouchableOpacity onPress={handleStorePress}>
               <MaterialCommunityIcons name="storefront-outline" color={COLORS.black} size={28} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 
 import AppText from "../common/AppText";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
@@ -10,8 +10,10 @@ type TProps = {
 };
 
 const Item = ({ title, price }: TProps) => {
+  function handlePress() {}
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handlePress}>
       <Image source={{ uri: "https://picsum.photos/201" }} style={styles.image} />
       <AppText style={styles.title}>{title}</AppText>
       <AppText style={styles.price}>${price}</AppText>

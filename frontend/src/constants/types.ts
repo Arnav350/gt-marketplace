@@ -1,5 +1,26 @@
 import { NavigatorScreenParams } from "@react-navigation/native";
 
+//database
+
+export type TItem = {
+  id: string;
+  seller_id: string;
+  title: string;
+  price: number;
+  category: TCategory;
+  condition: TCondition;
+  description: string | null;
+  address: string | null;
+  address_extra: string | null;
+  size: TSize | null;
+  score: number;
+  created_at: Date;
+  buyer_id: string | null;
+  price_sold: number | null;
+  sold_at: Date | null;
+  completed_at: Date | null;
+};
+
 //stacks
 
 export type TAuthStackParamsList = {
@@ -20,13 +41,15 @@ export type TTabStackParamsList = {
 export type THomeStackParamsList = {
   Home: undefined;
   Explore: undefined;
-  Item: undefined;
+  Item: TItem;
   SellingList: undefined;
   Wishlist: undefined;
 };
 
 //enums
 
-export type TCategory = "Clothing" | "Electronics" | "Furniture" | "Books" | "Other";
+export type TCategory = "Clothing" | "Electronics" | "Furniture" | "Books" | "Other" | null;
 
-export type TCondition = "Brand New" | "Like New" | "Good" | "Fair" | "Poor";
+export type TCondition = "Brand New" | "Like New" | "Good" | "Fair" | "Poor" | null;
+
+export type TSize = "Large" | "Medium" | "Small" | null;

@@ -12,9 +12,10 @@ type TProps = {
   category: TCategory;
   condition: TCondition;
   initSaved?: boolean;
+  handlePress: () => void;
 };
 
-const HorizontalItem = ({ title, price, category, condition, initSaved }: TProps) => {
+const HorizontalItem = ({ title, price, category, condition, initSaved, handlePress }: TProps) => {
   const [saved, setSaved] = useState<boolean | undefined>(initSaved);
 
   function handleBookmarkPress() {
@@ -44,8 +45,8 @@ const HorizontalItem = ({ title, price, category, condition, initSaved }: TProps
             <AppText style={styles.text}>{condition}</AppText>
           </View>
         </View>
-        <TouchableOpacity style={styles.contactContainer}>
-          <AppText style={styles.contact}>Contact Seller</AppText>
+        <TouchableOpacity style={styles.contactContainer} onPress={handlePress}>
+          <AppText style={styles.contact}>{initSaved === undefined ? "Edit Item" : "Contact Seller"}</AppText>
         </TouchableOpacity>
       </View>
     </View>

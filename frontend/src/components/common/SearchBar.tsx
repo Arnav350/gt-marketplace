@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 type TProps = {
   text: string;
   setText: Dispatch<SetStateAction<string>>;
-  handleSubmit: () => void;
+  handleSubmit?: () => void;
 };
 
 const SearchBar = ({ text, setText, handleSubmit }: TProps) => {

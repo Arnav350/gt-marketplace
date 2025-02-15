@@ -11,7 +11,7 @@ import HorizontalItem from "../../components/home/HorizontalItem";
 import { TCategory, TCondition, THomeStackParamsList } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 
-type TProps = StackScreenProps<THomeStackParamsList, "Explore">;
+type TProps = StackScreenProps<THomeStackParamsList, "Wishlist">;
 
 type TItem = {
   title: string;
@@ -48,8 +48,6 @@ const WishlistScreen = ({ navigation }: TProps) => {
     navigation.goBack();
   }
 
-  function handleSearchSubmit() {}
-
   return (
     <SafeAreaView style={styles.container} edges={["top", "right", "left"]}>
       <View style={styles.headerContainer}>
@@ -59,7 +57,7 @@ const WishlistScreen = ({ navigation }: TProps) => {
         <TouchableOpacity onPress={handleBackPress}>
           <MaterialCommunityIcons name="chevron-left" color={COLORS.black} size={32} />
         </TouchableOpacity>
-        <SearchBar text={search} setText={setSearch} handleSubmit={handleSearchSubmit} />
+        <SearchBar text={search} setText={setSearch} />
       </View>
       <View style={styles.filtersContainer}>
         <Filter />
@@ -68,7 +66,6 @@ const WishlistScreen = ({ navigation }: TProps) => {
         data={items}
         keyExtractor={(__, index) => index.toString()}
         contentContainerStyle={styles.itemsContainer}
-        ListHeaderComponent={items.length > 0 ? <AppText style={styles.subheader}>All Results</AppText> : null}
         ListEmptyComponent={
           <AppText style={styles.none}>
             No matches found for '<AppText>{search}</AppText>'
@@ -81,6 +78,7 @@ const WishlistScreen = ({ navigation }: TProps) => {
             category={item.category}
             condition={item.condition}
             initSaved={false}
+            handlePress={() => {}}
           />
         )}
       />
