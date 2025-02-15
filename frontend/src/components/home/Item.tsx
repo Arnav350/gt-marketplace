@@ -7,12 +7,11 @@ import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 type TProps = {
   title: string;
   price: number;
-  style?: ViewStyle;
 };
 
-const Item = ({ title, price, style }: TProps) => {
+const Item = ({ title, price }: TProps) => {
   return (
-    <TouchableOpacity style={[styles.container, style]}>
+    <TouchableOpacity style={styles.container}>
       <Image source={{ uri: "https://picsum.photos/201" }} style={styles.image} />
       <AppText style={styles.title}>{title}</AppText>
       <AppText style={styles.price}>${price}</AppText>

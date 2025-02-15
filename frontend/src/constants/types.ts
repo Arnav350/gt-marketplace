@@ -24,3 +24,9 @@ export type THomeStackParamsList = {
   SellingList: undefined;
   Wishlist: undefined;
 };
+
+//enums
+
+export type TCategory = "Clothing" | "Electronics" | "Furniture" | "Books" | "Other";
+
+export type TCondition = "Brand New" | "Like New" | "Good" | "Fair" | "Poor";

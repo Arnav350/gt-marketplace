@@ -80,7 +80,11 @@ const ExploreScreen = ({ navigation }: TProps) => {
             No matches found for '<AppText>{search}</AppText>'
           </AppText>
         }
-        renderItem={({ item }) => <Item title={item.title} price={item.price} style={styles.item} />}
+        renderItem={({ item }) => (
+          <View style={styles.itemContainer}>
+            <Item title={item.title} price={item.price} />
+          </View>
+        )}
       />
     </SafeAreaView>
   );
@@ -134,7 +138,7 @@ const styles = StyleSheet.create({
   none: {
     color: COLORS.textGray,
   },
-  item: {
+  itemContainer: {
     marginHorizontal: 8,
   },
 });
