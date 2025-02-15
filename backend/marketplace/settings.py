@@ -37,7 +37,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='fallback-secret-key')
 DEBUG = env("DEBUG", default=False)
 
 if not DEBUG:
-    ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 else:
     ALLOWED_HOSTS = ["*"]  # Allows all hosts in development
 
