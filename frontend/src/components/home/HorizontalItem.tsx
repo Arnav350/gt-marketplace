@@ -41,8 +41,8 @@ const HorizontalItem = ({ title, price, category, condition, initSaved, handlePr
           </View>
           <View style={styles.detailsContainer}>
             <AppText style={styles.price}>${price}</AppText>
-            <AppText style={styles.text}>{category}</AppText>
-            <AppText style={styles.text}>{condition}</AppText>
+            <AppText style={styles.detail}>{category}</AppText>
+            <AppText style={styles.detail}>{condition}</AppText>
           </View>
         </View>
         <TouchableOpacity style={styles.contactContainer} onPress={handlePress}>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     fontFamily: WEIGHTS.bold,
     fontSize: SIZES.medium,
   },
-  text: {
+  detail: {
     fontSize: SIZES.tiny,
   },
   contactContainer: {

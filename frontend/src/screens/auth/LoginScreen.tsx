@@ -36,7 +36,9 @@ const LoginScreen = ({ navigation }: TProps) => {
     <SafeAreaView style={styles.container}>
       <AppText style={styles.header}>Log in Now</AppText>
       {emailError && <AppText style={styles.error}>{emailError}</AppText>}
-      <Input placeholder="email" text={email} setText={setEmail} leftIcon="email" style={{ marginBottom: 8 }} />
+      <View style={styles.inputContainer}>
+        <Input placeholder="email" text={email} setText={setEmail} leftIcon="email" />
+      </View>
       {passwordError && <AppText style={styles.error}>{passwordError}</AppText>}
       <Input
         placeholder="passsword"
@@ -78,6 +80,10 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     color: COLORS.error,
     fontSize: SIZES.tiny,
+  },
+  inputContainer: {
+    marginBottom: 8,
+    width: "100%",
   },
   textContainer: {
     marginTop: 16,

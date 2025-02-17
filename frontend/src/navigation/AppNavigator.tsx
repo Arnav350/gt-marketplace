@@ -8,7 +8,7 @@ import { AuthContext } from "../hooks/useAuth";
 
 const AppNavigator = () => {
   // const { currentUser } = useContext(AuthContext);
-  const currentUser = true;
+  const currentUser = false;
 
   if (currentUser === undefined) {
     return <LoadingScreen />;

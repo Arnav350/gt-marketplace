@@ -15,7 +15,7 @@ type TProps = StackScreenProps<TAuthStackParamsList, "ForgotPassword">;
 const ForgotPasswordScreen = ({ navigation }: TProps) => {
   const insets = useSafeAreaInsets();
 
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [emailError, setEmailError] = useState<string>("");
 
   function handleBackPress() {
@@ -35,8 +35,9 @@ const ForgotPasswordScreen = ({ navigation }: TProps) => {
       </TouchableOpacity>
       <AppText style={styles.header}>Forgot Password</AppText>
       {emailError && <AppText style={styles.error}>{emailError}</AppText>}
-      <Input placeholder="email" text={username} setText={setUsername} leftIcon="email" style={{ marginBottom: 8 }} />
-
+      <View style={styles.inputContainer}>
+        <Input placeholder="email" text={email} setText={setEmail} leftIcon="email" />
+      </View>
       <PrimaryButton text="Send" handlePress={handleSendPress} style={{ marginTop: 32 }} />
       <View style={styles.textContainer}>
         <AppText style={styles.text}>Don't have an account?</AppText>
@@ -65,6 +66,10 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     fontFamily: WEIGHTS.bold,
     fontSize: 28,
+  },
+  inputContainer: {
+    marginBottom: 8,
+    width: "100%",
   },
   error: {
     marginLeft: 4,

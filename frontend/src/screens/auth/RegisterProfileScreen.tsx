@@ -37,37 +37,21 @@ const RegisterProfileScreen = ({ navigation }: TProps) => {
       </TouchableOpacity>
       <AppText style={styles.header}>Finish your Profile</AppText>
       {usernameError && <AppText style={styles.error}>{usernameError}</AppText>}
-      <Input
-        placeholder="username"
-        text={username}
-        setText={setUsername}
-        leftIcon="account"
-        style={{ marginBottom: 8 }}
-      />
+      <View style={styles.inputContainer}>
+        <Input placeholder="username" text={username} setText={setUsername} leftIcon="account" />
+      </View>
       {nameError && <AppText style={styles.error}>{nameError}</AppText>}
-      <Input
-        placeholder="full name"
-        text={name}
-        setText={setName}
-        leftIcon="account-multiple"
-        style={{ marginBottom: 8 }}
-      />
+      <View style={styles.inputContainer}>
+        <Input placeholder="full name" text={name} setText={setName} leftIcon="account-multiple" />
+      </View>
       {addressError && <AppText style={styles.error}>{addressError}</AppText>}
-      <Input
-        placeholder="street address"
-        text={address}
-        setText={setAddress}
-        leftIcon="home"
-        style={{ marginBottom: 8 }}
-      />
+      <View style={styles.inputContainer}>
+        <Input placeholder="street address" text={address} setText={setAddress} leftIcon="home" />
+      </View>
       {extraError && <AppText style={styles.error}>{extraError}</AppText>}
-      <Input
-        placeholder="po box, room number, etc."
-        text={extra}
-        setText={setExtra}
-        leftIcon="map-marker"
-        style={{ marginBottom: 8 }}
-      />
+      <View style={styles.inputContainer}>
+        <Input placeholder="po box, room number, etc." text={extra} setText={setExtra} leftIcon="map-marker" />
+      </View>
       <PrimaryButton text="Continue" handlePress={handleContinuePress} style={{ marginTop: 32 }} />
     </SafeAreaView>
   );
@@ -96,6 +80,10 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     color: COLORS.error,
     fontSize: SIZES.tiny,
+  },
+  inputContainer: {
+    marginBottom: 8,
+    width: "100%",
   },
 });
 
