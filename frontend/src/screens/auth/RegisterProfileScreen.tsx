@@ -52,7 +52,9 @@ const RegisterProfileScreen = ({ navigation }: TProps) => {
       <View style={styles.inputContainer}>
         <Input placeholder="po box, room number, etc." text={extra} setText={setExtra} leftIcon="map-marker" />
       </View>
-      <PrimaryButton text="Continue" handlePress={handleContinuePress} style={{ marginTop: 32 }} />
+      <View style={styles.buttonContainer}>
+        <PrimaryButton text="Continue" handlePress={handleContinuePress} />
+      </View>
     </SafeAreaView>
   );
 };
@@ -83,6 +85,10 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 8,
+    width: "100%",
+  },
+  buttonContainer: {
+    marginTop: 32,
     width: "100%",
   },
 });

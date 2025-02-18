@@ -41,9 +41,17 @@ export type TTabStackParamsList = {
 export type THomeStackParamsList = {
   Home: undefined;
   Explore: undefined;
-  Item: TItem;
+  Item: { itemId: string };
   SellingList: undefined;
   Wishlist: undefined;
+};
+
+export type TMessagesStackParamsList = {
+  Messages: undefined;
+  Chat: { userId: string };
+  Payment: undefined;
+  Delivery: undefined;
+  Summary: undefined;
 };
 
 //enums

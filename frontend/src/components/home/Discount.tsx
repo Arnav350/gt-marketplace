@@ -25,7 +25,6 @@ const Discount = ({ text }: TProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 24,

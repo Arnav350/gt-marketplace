@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, ScrollView, FlatList } from "react-native";
+import { View, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
   },
   headerContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 4,
@@ -107,19 +106,16 @@ const styles = StyleSheet.create({
     fontSize: SIZES.header,
   },
   iconsContainer: {
-    display: "flex",
     flexDirection: "row",
     gap: 4,
   },
   searchContainer: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
     marginHorizontal: 16,
   },
   filtersContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "flex-end",
     gap: 8,

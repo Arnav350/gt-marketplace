@@ -46,7 +46,9 @@ const RegisterScreen = ({ navigation }: TProps) => {
         rightIcon={showPass ? "eye-off" : "eye"}
         iconPress={handleEyePress}
       />
-      <PrimaryButton text="Register" handlePress={handleRegisterPress} style={{ marginTop: 56 }} />
+      <View style={styles.buttonContainer}>
+        <PrimaryButton text="Register" handlePress={handleRegisterPress} />
+      </View>
       <View style={styles.textContainer}>
         <AppText style={styles.text}>Already have an account?</AppText>
         <TouchableOpacity onPress={handleLoginPress}>
@@ -80,9 +82,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     width: "100%",
   },
+  buttonContainer: {
+    marginTop: 56,
+    width: "100%",
+  },
   textContainer: {
     marginTop: 16,
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
   },

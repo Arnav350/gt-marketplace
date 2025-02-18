@@ -6,12 +6,11 @@ import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 type TProps = {
   text: string;
   handlePress: () => void;
-  style?: ViewStyle;
 };
 
-const PrimaryButton = ({ text, handlePress, style }: TProps) => {
+const PrimaryButton = ({ text, handlePress }: TProps) => {
   return (
-    <TouchableOpacity style={[styles.container, style]} onPress={handlePress}>
+    <TouchableOpacity style={styles.container} onPress={handlePress}>
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );

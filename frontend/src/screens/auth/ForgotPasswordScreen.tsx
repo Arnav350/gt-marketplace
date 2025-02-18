@@ -38,7 +38,9 @@ const ForgotPasswordScreen = ({ navigation }: TProps) => {
       <View style={styles.inputContainer}>
         <Input placeholder="email" text={email} setText={setEmail} leftIcon="email" />
       </View>
-      <PrimaryButton text="Send" handlePress={handleSendPress} style={{ marginTop: 32 }} />
+      <View style={styles.buttonContainer}>
+        <PrimaryButton text="Send" handlePress={handleSendPress} />
+      </View>
       <View style={styles.textContainer}>
         <AppText style={styles.text}>Don't have an account?</AppText>
         <TouchableOpacity onPress={handleRegisterPress}>
@@ -67,19 +69,22 @@ const styles = StyleSheet.create({
     fontFamily: WEIGHTS.bold,
     fontSize: 28,
   },
-  inputContainer: {
-    marginBottom: 8,
-    width: "100%",
-  },
   error: {
     marginLeft: 4,
     alignSelf: "flex-start",
     color: COLORS.error,
     fontSize: SIZES.tiny,
   },
+  inputContainer: {
+    marginBottom: 8,
+    width: "100%",
+  },
+  buttonContainer: {
+    marginTop: 32,
+    width: "100%",
+  },
   textContainer: {
     marginTop: 16,
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
   },

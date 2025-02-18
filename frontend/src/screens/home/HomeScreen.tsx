@@ -46,24 +46,8 @@ const HomeScreen = ({ navigation }: TProps) => {
     },
   ];
 
-  const item: TItem = {
+  const item = {
     id: "1",
-    seller_id: "2",
-    title: "Zara Classic White Shirt",
-    price: 28,
-    category: "Clothing",
-    condition: "Like New",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore sequi nemo magnam laborum libero deleniti earum quos placeat. Nostrum, nihil harum. Sapiente aperiam dicta saepe unde iure recusandae mollitia ex.",
-    address: "1234 Main St",
-    address_extra: "Apt 123",
-    size: "Medium",
-    score: 10,
-    created_at: new Date(),
-    buyer_id: "3",
-    price_sold: 28,
-    sold_at: new Date(),
-    completed_at: new Date(),
   };
 
   const [search, setSearch] = useState<string>("");
@@ -81,10 +65,10 @@ const HomeScreen = ({ navigation }: TProps) => {
   }
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "right", "left"]}>
+    <SafeAreaView edges={["top", "right", "left"]} style={styles.container}>
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.headerContainer}>
-          <AppText style={styles.header} onPress={() => navigation.navigate("Item", item)}>
+          <AppText style={styles.header} onPress={() => navigation.navigate("Item", { itemId: item.id })}>
             Home
           </AppText>
           <View style={styles.iconsContainer}>
@@ -133,7 +117,6 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   headerContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 4,
@@ -143,7 +126,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.header,
   },
   iconsContainer: {
-    display: "flex",
     flexDirection: "row",
     gap: 4,
   },

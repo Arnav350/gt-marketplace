@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
   },
   headerContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 4,
@@ -103,14 +102,12 @@ const styles = StyleSheet.create({
     fontSize: SIZES.header,
   },
   searchContainer: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
     marginHorizontal: 16,
   },
   filtersContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "flex-end",
     gap: 8,

@@ -11,20 +11,13 @@ type TProps = {
   leftIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
   rightIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
   iconPress?: () => void;
-  style?: ViewStyle;
 };
 
-const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress, style }: TProps) => {
+const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress }: TProps) => {
   const [focused, setFocused] = useState<boolean>(false);
 
   return (
-    <View
-      style={[
-        styles.container,
-        focused && { backgroundColor: COLORS.alphaPrimary, borderColor: COLORS.primary },
-        style,
-      ]}
-    >
+    <View style={[styles.container, focused && { backgroundColor: COLORS.alphaPrimary, borderColor: COLORS.primary }]}>
       <View style={styles.leftContainer}>
         {leftIcon && <MaterialCommunityIcons name={leftIcon} size={20} color={COLORS.black} style={styles.leftIcon} />}
         <TextInput
@@ -50,7 +43,6 @@ const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress, sty
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -61,7 +53,6 @@ const styles = StyleSheet.create({
   },
   leftContainer: {
     flex: 1,
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
   },

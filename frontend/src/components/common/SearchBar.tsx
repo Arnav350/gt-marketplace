@@ -31,7 +31,6 @@ const SearchBar = ({ text, setText, handleSubmit }: TProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: 12,

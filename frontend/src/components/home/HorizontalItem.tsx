@@ -55,7 +55,6 @@ const HorizontalItem = ({ title, price, category, condition, initSaved, handlePr
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     flexDirection: "row",
     gap: 8,
     padding: 8,
@@ -74,7 +73,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   titleContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
   },
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
     fontFamily: WEIGHTS.medium,
   },
   detailsContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

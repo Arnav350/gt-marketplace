@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { THomeStackParamsList } from "../../constants/types";
+import { THomeStackParamsList, TItem } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 import AppText from "../../components/common/AppText";
 import Item from "../../components/home/Item";
@@ -14,6 +14,26 @@ import UserInfo from "../../components/common/UserInfo";
 type TProps = StackScreenProps<THomeStackParamsList, "Item">;
 
 const ItemScreen = ({ navigation, route }: TProps) => {
+  const item: TItem = {
+    id: "1",
+    seller_id: "2",
+    title: "Zara Classic White Shirt",
+    price: 28,
+    category: "Clothing",
+    condition: "Like New",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore sequi nemo magnam laborum libero deleniti earum quos placeat. Nostrum, nihil harum. Sapiente aperiam dicta saepe unde iure recusandae mollitia ex.",
+    address: "1234 Main St",
+    address_extra: "Apt 123",
+    size: "Medium",
+    score: 10,
+    created_at: new Date(),
+    buyer_id: "3",
+    price_sold: 28,
+    sold_at: new Date(),
+    completed_at: new Date(),
+  };
+
   const [saved, setSaved] = useState<boolean>(false);
 
   function handleBackPress() {
@@ -37,7 +57,7 @@ const ItemScreen = ({ navigation, route }: TProps) => {
         </View>
         <View style={styles.bodyContainer}>
           <View style={styles.titleContainer}>
-            <AppText style={styles.title}>{route.params.title}</AppText>
+            <AppText style={styles.title}>{item.title}</AppText>
             <TouchableOpacity onPress={handleBookmarkPress}>
               {saved ? (
                 <MaterialCommunityIcons name="bookmark" color={COLORS.primary} size={36} />
@@ -47,11 +67,11 @@ const ItemScreen = ({ navigation, route }: TProps) => {
             </TouchableOpacity>
           </View>
           <View style={styles.detailsContainer}>
-            <AppText style={styles.price}>${route.params.price}</AppText>
-            <AppText style={styles.detail}>{route.params.category}</AppText>
-            <AppText style={styles.detail}>{route.params.condition}</AppText>
+            <AppText style={styles.price}>${item.price}</AppText>
+            <AppText style={styles.detail}>{item.category}</AppText>
+            <AppText style={styles.detail}>{item.condition}</AppText>
           </View>
-          <AppText style={styles.description}>{route.params.description}</AppText>
+          <AppText style={styles.description}>{item.description}</AppText>
           <AppText style={styles.subheader}>About the Seller</AppText>
           <UserInfo image="https://picsum.photos/204" name="Arnav Patel" username="patelarnav" />
           <AppText style={styles.subheader}>Similar Items</AppText>
@@ -62,7 +82,7 @@ const ItemScreen = ({ navigation, route }: TProps) => {
           </ScrollView>
         </View>
       </ScrollView>
-      <View style={styles.buttonContainer}>
+      <View style={styles.contactContainer}>
         <PrimaryButton text="Contact Seller" handlePress={() => {}} />
       </View>
     </SafeAreaView>
@@ -81,7 +101,6 @@ const styles = StyleSheet.create({
     marginBottom: 96,
   },
   titleContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -91,7 +110,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.subheader,
   },
   detailsContainer: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 32,
@@ -114,7 +132,7 @@ const styles = StyleSheet.create({
     fontFamily: WEIGHTS.semiBold,
     fontSize: SIZES.subheader,
   },
-  buttonContainer: {
+  contactContainer: {
     position: "absolute",
     bottom: 32,
     paddingHorizontal: 32,

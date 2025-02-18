@@ -26,7 +26,6 @@ const UserInfo = ({ image, name, username }: TProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
