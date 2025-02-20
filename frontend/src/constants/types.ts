@@ -76,6 +76,35 @@ export type TService = {
   completed_at: Date | null;
 };
 
+export type TMessage = {
+  id: string;
+  sender_id: string;
+  receiver_id: string;
+  format: "Text" | "Image" | "File";
+  content: string;
+  created_at: Date;
+};
+
+export type TReport = {
+  id: string;
+  reporter_id: string;
+  reportee_id: string;
+  reason: string | null;
+  created_at: Date;
+};
+
+export type TBlock = {
+  blocker_id: string;
+  blockee_id: string;
+  created_at: Date;
+};
+
+export type TBan = {
+  id: string;
+  email: string;
+  created_at: Date;
+};
+
 //stacks
 
 export type TAuthStackParamsList = {
