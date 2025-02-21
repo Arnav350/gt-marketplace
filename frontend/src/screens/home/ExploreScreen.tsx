@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { View, StyleSheet, TouchableOpacity, FlatList, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -10,6 +10,7 @@ import Filter from "../../components/home/Filter";
 import Item from "../../components/home/Item";
 import { THomeStackParamsList } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
+import FilterOption from "../../components/home/FilterOption";
 
 type TProps = StackScreenProps<THomeStackParamsList, "Explore">;
 
@@ -29,7 +30,16 @@ const ExploreScreen = ({ navigation }: TProps) => {
     },
   ];
 
+  const filtersScrollRef = useRef<ScrollView>(null);
+
   const [search, setSearch] = useState<string>("");
+  const [filters, setFilters] = useState<string[]>(["clothing", "<$50", "brand new"]);
+
+  useEffect(() => {
+    if (filtersScrollRef.current) {
+      filtersScrollRef.current.scrollToEnd({ animated: false });
+    }
+  }, []);
 
   function handleStorePress() {
     navigation.navigate("SellingList");
@@ -41,6 +51,10 @@ const ExploreScreen = ({ navigation }: TProps) => {
 
   function handleBackPress() {
     navigation.goBack();
+  }
+
+  function handleFilterPress(text: string) {
+    setFilters((prev) => prev.filter((filter) => filter !== text));
   }
 
   function handleSearchSubmit() {
@@ -66,9 +80,17 @@ const ExploreScreen = ({ navigation }: TProps) => {
         </TouchableOpacity>
         <SearchBar text={search} setText={setSearch} handleSubmit={handleSearchSubmit} />
       </View>
-      <View style={styles.filtersContainer}>
+      <ScrollView
+        ref={filtersScrollRef}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.filtersContainer}
+      >
+        {filters.map((filter, i) => (
+          <FilterOption key={i} text={filter} handlePress={(filter) => handleFilterPress(filter)} />
+        ))}
         <Filter />
-      </View>
+      </ScrollView>
       <FlatList
         data={items}
         numColumns={2}
@@ -117,10 +139,9 @@ const styles = StyleSheet.create({
   },
   filtersContainer: {
     flexDirection: "row",
-    justifyContent: "flex-end",
     gap: 8,
     marginTop: 8,
-    marginHorizontal: 16,
+    paddingHorizontal: 16,
   },
   itemsContainer: {
     gap: 16,

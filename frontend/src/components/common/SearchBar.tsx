@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 
 import { COLORS } from "../../constants/theme";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -11,6 +11,10 @@ type TProps = {
 };
 
 const SearchBar = ({ text, setText, handleSubmit }: TProps) => {
+  function handleClosePress() {
+    setText("");
+  }
+
   return (
     <View style={styles.container}>
       <MaterialCommunityIcons name="magnify" color={COLORS.textGray} size={24} />
@@ -24,6 +28,11 @@ const SearchBar = ({ text, setText, handleSubmit }: TProps) => {
         onChangeText={setText}
         onSubmitEditing={handleSubmit}
       />
+      {text.length > 0 && (
+        <TouchableOpacity onPress={handleClosePress}>
+          <MaterialCommunityIcons name="close-circle-outline" color={COLORS.black} size={24} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -33,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft: 12,
+    paddingHorizontal: 12,
     height: 48,
     backgroundColor: COLORS.smallGray,
     borderRadius: 24,
