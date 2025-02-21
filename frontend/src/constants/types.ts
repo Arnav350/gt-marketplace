@@ -14,15 +14,17 @@ export type TUser = {
   created_at: Date;
 };
 
-export type TCategory = "Clothing" | "Electronics" | "Furniture" | "Books" | "Other";
+export type TCategory = "Clothing" | "Electronics" | "Furniture" | "Books" | "Other" | null;
+
+export type TCondition = "Brand New" | "Like New" | "Good" | "Fair" | "Poor" | null;
 
 export type TItem = {
   id: string;
   seller_id: string;
   title: string;
   price: number;
-  category: TCategory | null;
-  condition: "Brand New" | "Like New" | "Good" | "Fair" | "Poor" | null;
+  category: TCategory;
+  condition: TCondition;
   description: string | null;
   address: string | null;
   address_extra: string | null;
