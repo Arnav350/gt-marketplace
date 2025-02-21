@@ -13,7 +13,7 @@ import { TMessagesStackParamsList } from "../../constants/types";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
 import Subtotal from "../../components/messages/Subtotal";
 
-type TProps = StackScreenProps<TMessagesStackParamsList, "Messages">;
+type TProps = StackScreenProps<TMessagesStackParamsList, "Delivery">;
 
 const DeliveryScreen = ({ navigation }: TProps) => {
   const item = 28;
@@ -69,7 +69,7 @@ const DeliveryScreen = ({ navigation }: TProps) => {
           <AppText>total</AppText>
           <AppText style={styles.price}>${item + delivery + discount + tax}</AppText>
         </View>
-        <PrimaryButton text="confirm" handlePress={handleConfirmPress} />
+        <PrimaryButton text="Confirm" handlePress={handleConfirmPress} />
       </View>
     </SafeAreaView>
   );
@@ -80,6 +80,8 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "space-between",
     padding: 16,
+    paddingBottom: 32,
+    height: "100%",
     backgroundColor: COLORS.white,
   },
   headerContainer: {

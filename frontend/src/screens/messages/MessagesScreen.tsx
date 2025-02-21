@@ -45,7 +45,7 @@ const MessagesScreen = ({ navigation }: TProps) => {
   return (
     <SafeAreaView edges={["top", "right", "left"]} style={styles.container}>
       <View style={styles.headerContainer}>
-        <AppText style={styles.header} onPress={() => navigation.navigate("Chat", { userId: user.id })}>
+        <AppText style={styles.header} onPress={() => navigation.navigate("Summary")}>
           Messages
         </AppText>
         <TouchableOpacity onPress={handleEditPress}>

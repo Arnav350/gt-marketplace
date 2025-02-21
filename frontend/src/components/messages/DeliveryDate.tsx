@@ -24,6 +24,8 @@ const DeliveryDate = ({ text, selected, setSelected }: TProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     backgroundColor: COLORS.largeGray,
     borderRadius: 8,
     shadowOpacity: 0.2,

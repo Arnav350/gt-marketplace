@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StackScreenProps } from "@react-navigation/stack";
+import Carousel, { Pagination } from "react-native-reanimated-carousel";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { THomeStackParamsList, TItem } from "../../constants/types";
@@ -10,6 +11,7 @@ import AppText from "../../components/common/AppText";
 import Item from "../../components/home/Item";
 import PrimaryButton from "../../components/common/PrimaryButton";
 import UserInfo from "../../components/common/UserInfo";
+import { useSharedValue } from "react-native-reanimated";
 
 type TProps = StackScreenProps<THomeStackParamsList, "Item">;
 
@@ -34,6 +36,14 @@ const ItemScreen = ({ navigation, route }: TProps) => {
     completed_at: new Date(),
   };
 
+  const images = [
+    { uri: "https://picsum.photos/203" },
+    { uri: "https://picsum.photos/203" },
+    { uri: "https://picsum.photos/203" },
+  ];
+
+  const { width } = Dimensions.get("window");
+
   const [saved, setSaved] = useState<boolean>(false);
 
   function handleBackPress() {
@@ -44,16 +54,36 @@ const ItemScreen = ({ navigation, route }: TProps) => {
     setSaved((prev) => !prev);
   }
 
+  const progress = useSharedValue<number>(0);
+
   return (
     <SafeAreaView edges={["top", "right", "left"]} style={styles.container}>
       <ScrollView style={styles.scrollContainer}>
-        <TouchableOpacity onPress={handleBackPress}>
+        <TouchableOpacity onPress={handleBackPress} style={styles.backContainer}>
           <MaterialCommunityIcons name="chevron-left" color={COLORS.black} size={32} />
         </TouchableOpacity>
-        <View>
-          <Image source={{ uri: "https://picsum.photos/203" }} />
-          <Image source={{ uri: "https://picsum.photos/203" }} />
-          <Image source={{ uri: "https://picsum.photos/203" }} />
+        <View style={styles.carouselContainer}>
+          <Carousel
+            data={images}
+            renderItem={({ item }) => <Image source={{ uri: item.uri }} style={styles.image} />}
+            width={width}
+            onProgressChange={progress}
+            loop={true}
+          />
+          <Pagination.Basic
+            progress={progress}
+            data={images}
+            dotStyle={{
+              borderRadius: 16,
+              backgroundColor: COLORS.smallGray,
+            }}
+            activeDotStyle={{
+              borderRadius: 16,
+              overflow: "hidden",
+              backgroundColor: COLORS.black,
+            }}
+            containerStyle={styles.paginationContainer}
+          />
         </View>
         <View style={styles.bodyContainer}>
           <View style={styles.titleContainer}>
@@ -95,6 +125,24 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     height: "100%",
+  },
+  backContainer: {
+    margin: 16,
+  },
+  carouselContainer: {
+    position: "relative",
+    height: 250,
+  },
+  image: {
+    height: 250,
+    width: "100%",
+  },
+  paginationContainer: {
+    position: "absolute",
+    bottom: 16,
+    left: "50%",
+    transform: [{ translateX: "-50%" }],
+    gap: 4,
   },
   bodyContainer: {
     padding: 16,

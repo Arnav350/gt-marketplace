@@ -30,7 +30,7 @@ const ForgotPasswordScreen = ({ navigation }: TProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity onPress={handleBackPress} style={[styles.backContainer, { top: 16 + insets.top }]}>
+      <TouchableOpacity style={[styles.backContainer, { top: 16 + insets.top }]} onPress={handleBackPress}>
         <MaterialCommunityIcons name="chevron-left" color={COLORS.black} size={40} />
       </TouchableOpacity>
       <AppText style={styles.header}>Forgot Password</AppText>

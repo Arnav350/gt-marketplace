@@ -10,8 +10,12 @@ type TProps = {
 };
 
 const Checkbox = ({ checked, setChecked }: TProps) => {
+  function handlePress() {
+    setChecked((prev) => !prev);
+  }
+
   return (
-    <TouchableOpacity onPress={(prevChecked) => setChecked(!prevChecked)}>
+    <TouchableOpacity onPress={handlePress}>
       {checked ? (
         <MaterialCommunityIcons name="checkbox-marked" size={24} color={COLORS.primary} />
       ) : (
