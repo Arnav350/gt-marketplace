@@ -1,5 +1,5 @@
 import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View, ViewStyle } from "react-native";
+import { KeyboardTypeOptions, StyleSheet, TextInput, TouchableOpacity, View, ViewStyle } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { COLORS } from "../../constants/theme";
@@ -11,9 +11,10 @@ type TProps = {
   leftIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
   rightIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
   iconPress?: () => void;
+  type?: KeyboardTypeOptions;
 };
 
-const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress }: TProps) => {
+const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress, type }: TProps) => {
   const [focused, setFocused] = useState<boolean>(false);
 
   return (
@@ -25,6 +26,7 @@ const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress }: T
           placeholderTextColor={COLORS.textGray}
           selectionColor={COLORS.primary}
           secureTextEntry={rightIcon === "eye" ? true : false}
+          keyboardType={type}
           value={text}
           onChangeText={setText}
           style={styles.input}

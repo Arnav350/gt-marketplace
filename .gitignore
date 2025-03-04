@@ -9,19 +9,12 @@ frontend/.expo/
 frontend/build/
 frontend/.next/
 frontend/package-lock.json
-frontend/yarn.lock
-frontend/coverage/
 
 # Backend (Django with SQL Database)
-backend/__pycache__/
-backend/*.py[cod]
-backend/staticfiles/
-backend/media/
-backend/.venv/
-backend/env/
-backend/*.log
-backend/.coverage
-backend/migrations/
+backend/node_modules/
+backend/.env/
+backend/.vscode/
+backend/package-lock.json
 
 # Python Virtual Environments
 *.env

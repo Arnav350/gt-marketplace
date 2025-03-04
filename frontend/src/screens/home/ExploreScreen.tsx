@@ -80,9 +80,6 @@ const ExploreScreen = ({ navigation }: TProps) => {
           onLayout={(event) => {
             const { width: scrollWidth } = event.nativeEvent.layout;
             setFiltersScrollWidth(scrollWidth);
-
-            console.log(scrollWidth);
-            console.log(width);
           }}
           style={styles.filtersContainer}
         >
