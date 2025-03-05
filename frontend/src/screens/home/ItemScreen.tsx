@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Dimensions, Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StackScreenProps } from "@react-navigation/stack";
+import { useSharedValue } from "react-native-reanimated";
 import Carousel, { Pagination } from "react-native-reanimated-carousel";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -11,7 +12,6 @@ import AppText from "../../components/common/AppText";
 import Item from "../../components/home/Item";
 import PrimaryButton from "../../components/common/PrimaryButton";
 import UserInfo from "../../components/common/UserInfo";
-import { useSharedValue } from "react-native-reanimated";
 
 type TProps = StackScreenProps<THomeStackParamsList, "Item">;
 

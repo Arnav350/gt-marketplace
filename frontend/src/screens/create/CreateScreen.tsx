@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
+import { conditions } from "../../constants/init";
 import Input from "../../components/common/Input";
 import AppText from "../../components/common/AppText";
 import PrimaryButton from "../../components/common/PrimaryButton";
-import { TextInput } from "react-native-gesture-handler";
+import Dropdown from "../../components/common/Dropdown";
 
 const CreateScreen = () => {
   const [itemName, setItemName] = useState<string>("");
@@ -26,6 +27,8 @@ const CreateScreen = () => {
     setMore((prev) => !prev);
   }
 
+  function handleCreatePress() {}
+
   return (
     <SafeAreaView edges={["top", "right", "left"]} style={styles.container}>
       <AppText style={styles.header}>Create a Listing</AppText>
@@ -39,7 +42,7 @@ const CreateScreen = () => {
           <View style={styles.moreContainer}>
             <View style={styles.rowContainer}>
               <Input placeholder="category" text={category} setText={setCategory} />
-              <Input placeholder="condition" text={condition} setText={setCondition} />
+              <Dropdown placeholder="condition" options={conditions} selected={condition} setSelected={setCondition} />
               <Input placeholder="size" text={size} setText={setSize} />
             </View>
             <TextInput
@@ -63,7 +66,7 @@ const CreateScreen = () => {
         <PrimaryButton text={more ? "Show less /\\" : "Show more \\/"} handlePress={handleShowPress} />
       </ScrollView>
       <View style={styles.createContainer}>
-        <PrimaryButton text="Create Listing" handlePress={() => {}} />
+        <PrimaryButton text="Create Listing" handlePress={handleCreatePress} />
       </View>
     </SafeAreaView>
   );
@@ -72,6 +75,7 @@ const CreateScreen = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.white,
+    height: "100%",
   },
   header: {
     padding: 16,
@@ -100,15 +104,18 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    gap: 8,
   },
   description: {
-    padding: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 12,
     height: 112,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: COLORS.borderGray,
   },
   createContainer: {
+    marginBottom: 16,
     padding: 16,
   },
 });

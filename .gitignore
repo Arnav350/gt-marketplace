@@ -10,7 +10,7 @@ frontend/build/
 frontend/.next/
 frontend/package-lock.json
 
-# Backend (Django with SQL Database)
+# Backend (Express with SQL Database)
 backend/node_modules/
 backend/.env/
 backend/.vscode/

@@ -8,3 +8,5 @@ export const categories = [
   "event tickets",
   "health",
 ];
+
+export const conditions = ["brand new", "like new", "good", "fair", "poor"];
