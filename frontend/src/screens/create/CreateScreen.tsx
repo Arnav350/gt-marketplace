@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
-import { conditions } from "../../constants/init";
+import { categories, conditions, sizes } from "../../constants/init";
 import Input from "../../components/common/Input";
 import AppText from "../../components/common/AppText";
 import PrimaryButton from "../../components/common/PrimaryButton";
@@ -41,9 +41,9 @@ const CreateScreen = () => {
         {more && (
           <View style={styles.moreContainer}>
             <View style={styles.rowContainer}>
-              <Input placeholder="category" text={category} setText={setCategory} />
+              <Dropdown placeholder="category" options={categories} selected={category} setSelected={setCategory} />
               <Dropdown placeholder="condition" options={conditions} selected={condition} setSelected={setCondition} />
-              <Input placeholder="size" text={size} setText={setSize} />
+              <Dropdown placeholder="size" options={sizes} selected={size} setSelected={setSize} />
             </View>
             <TextInput
               placeholder="description"
@@ -53,7 +53,7 @@ const CreateScreen = () => {
               value={description}
               style={[
                 styles.description,
-                descriptionFocused && { backgroundColor: COLORS.alphaPrimary, borderColor: COLORS.primary },
+                descriptionFocused && { backgroundColor: COLORS.lightPrimary, borderColor: COLORS.primary },
               ]}
               onChangeText={setDescription}
               onFocus={() => setDescriptionFocused(true)}
@@ -63,7 +63,11 @@ const CreateScreen = () => {
             <Input placeholder="po box, room, etc." text={addressExtra} setText={setAddressExtra} />
           </View>
         )}
-        <PrimaryButton text={more ? "Show less /\\" : "Show more \\/"} handlePress={handleShowPress} />
+        <PrimaryButton
+          text={more ? "Show less" : "Show more"}
+          handlePress={handleShowPress}
+          icon={more ? "chevron-up" : "chevron-down"}
+        />
       </ScrollView>
       <View style={styles.createContainer}>
         <PrimaryButton text="Create Listing" handlePress={handleCreatePress} />

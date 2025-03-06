@@ -18,7 +18,7 @@ const Input = ({ placeholder, text, setText, leftIcon, rightIcon, iconPress, typ
   const [focused, setFocused] = useState<boolean>(false);
 
   return (
-    <View style={[styles.container, focused && { backgroundColor: COLORS.alphaPrimary, borderColor: COLORS.primary }]}>
+    <View style={[styles.container, focused && { backgroundColor: COLORS.lightPrimary, borderColor: COLORS.primary }]}>
       <View style={styles.leftContainer}>
         {leftIcon && <MaterialCommunityIcons name={leftIcon} size={20} color={COLORS.black} style={styles.leftIcon} />}
         <TextInput

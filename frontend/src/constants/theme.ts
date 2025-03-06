@@ -1,6 +1,6 @@
 const COLORS = {
   primary: "#B3A369",
-  alphaPrimary: "#B3A36940",
+  lightPrimary: "#ECE8DA",
   error: "#FF0000",
   black: "#222222",
   textGray: "#888888",
