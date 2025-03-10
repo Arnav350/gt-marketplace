@@ -1,28 +1,30 @@
 import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 interface AuthModalProps {
   type: "login" | "signup";
   onClose: () => void;
+  onSuccess?: () => void;
 }
 
-const AuthModal: React.FC<AuthModalProps> = ({ type: initialType, onClose }) => {
+const AuthModal: React.FC<AuthModalProps> = ({ type: initialType, onClose, onSuccess }) => {
   const [type, setType] = useState(initialType);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const { login } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add authentication logic here
-    console.log("Form submitted:", { email, password, name });
+    // In a real app, you would validate and authenticate with a backend
+    login(email);
+    onClose();
+    onSuccess?.();
   };
 
   const toggleType = () => {
     setType(type === "login" ? "signup" : "login");
-    // Clear form when switching
     setEmail("");
     setPassword("");
-    setName("");
   };
 
   return (
@@ -37,21 +39,6 @@ const AuthModal: React.FC<AuthModalProps> = ({ type: initialType, onClose }) => 
         </p>
 
         <form onSubmit={handleSubmit}>
-          {type === "signup" && (
-            <div className="form-group">
-              <label htmlFor="name">Full Name</label>
-              <div className="input-container">
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Enter your full name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-          )}
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <div className="input-container">

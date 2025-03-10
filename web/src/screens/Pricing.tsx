@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import AuthModal from "../components/AuthModal";
 
 const Pricing = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
   const plans = [
     {
       name: "PackUp",
@@ -60,6 +67,20 @@ const Pricing = () => {
     },
   ];
 
+  const handlePlanSelect = (plan: any) => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+
+    navigate("/booking", {
+      state: {
+        planName: plan.name,
+        price: plan.price,
+      },
+    });
+  };
+
   return (
     <div className="pricing-container">
       <h1>Storage Solutions</h1>
@@ -82,12 +103,19 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button className={`btn ${plan.isCustom ? "btn-secondary" : "btn-primary"}`}>
+            <button
+              className={`btn ${plan.isCustom ? "btn-secondary" : "btn-primary"}`}
+              onClick={() => handlePlanSelect(plan)}
+            >
               {plan.isCustom ? "Contact Us" : "Select Plan"}
             </button>
           </div>
         ))}
       </div>
+
+      {showAuthModal && (
+        <AuthModal type="login" onClose={() => setShowAuthModal(false)} onSuccess={() => navigate("/booking")} />
+      )}
     </div>
   );
 };
