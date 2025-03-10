@@ -1,0 +1,95 @@
+import React from "react";
+
+const Pricing = () => {
+  const plans = [
+    {
+      name: "PackUp",
+      price: "$50",
+      description: "Perfect for students who need help packing and unpacking",
+      features: [
+        "Professional packing assistance",
+        "Unpacking service at destination",
+        "Packing materials provided",
+        "Loading/unloading assistance",
+        "2-hour service window",
+      ],
+      recommended: false,
+    },
+    {
+      name: "Transport + Storage",
+      price: "$150",
+      description: "Ideal for pre-packed items needing storage",
+      features: [
+        "Pickup from your location",
+        "Secure storage facility",
+        "Climate-controlled storage",
+        "Return delivery after break",
+        "Basic insurance coverage",
+        "Online storage tracking",
+      ],
+      recommended: true,
+    },
+    {
+      name: "Everything",
+      price: "$200",
+      description: "Complete end-to-end solution",
+      features: [
+        "Professional packing service",
+        "All packing materials included",
+        "Transportation to storage",
+        "Secure storage during break",
+        "Return delivery",
+        "Complete unpacking service",
+        "Premium insurance coverage",
+      ],
+      recommended: false,
+    },
+    {
+      name: "Custom",
+      price: "Variable",
+      description: "Build your perfect storage solution",
+      features: [
+        "Choose your services",
+        "Flexible scheduling",
+        "Pay only for what you need",
+        "Custom insurance options",
+        "Personalized service plan",
+      ],
+      recommended: false,
+      isCustom: true,
+    },
+  ];
+
+  return (
+    <div className="pricing-container">
+      <h1>Storage Solutions</h1>
+      <p className="pricing-subtitle">Choose the service that fits your needs</p>
+      <div className="pricing-grid">
+        {plans.map((plan) => (
+          <div key={plan.name} className={`pricing-card ${plan.recommended ? "recommended" : ""}`}>
+            {plan.recommended && <div className="recommended-badge">Most Popular</div>}
+            <h2>{plan.name}</h2>
+            <div className="price">
+              {plan.price}
+              {!plan.isCustom && <span className="price-period">/semester</span>}
+            </div>
+            <p className="plan-description">{plan.description}</p>
+            <ul className="feature-list">
+              {plan.features.map((feature) => (
+                <li key={feature}>
+                  <span className="check-icon">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <button className={`btn ${plan.isCustom ? "btn-secondary" : "btn-primary"}`}>
+              {plan.isCustom ? "Contact Us" : "Select Plan"}
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Pricing;

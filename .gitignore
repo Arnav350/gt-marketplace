@@ -3,12 +3,20 @@
 __pycache__/
 .DS_Store
 
+# Web (React)
+web/node_modules/
+frontend/build/
+frontend/.next/
+web/package-lock.json
+web/.env/
+
 # Frontend (React Native/Expo)
 frontend/node_modules/
 frontend/.expo/
 frontend/build/
 frontend/.next/
 frontend/package-lock.json
+frontend/.env/
 
 # Backend (Express with SQL Database)
 backend/node_modules/
@@ -16,10 +24,8 @@ backend/.env/
 backend/.vscode/
 backend/package-lock.json
 
-# Python Virtual Environments
+# Environment variables
 *.env
-*.venv
-venv/
 ENV/
 env/
 
