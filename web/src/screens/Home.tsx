@@ -17,34 +17,34 @@ const Home = () => {
         <div className="features-grid">
           {[
             {
-              icon: "🏠",
-              title: "Local Storage",
-              description: "Find storage space with fellow GT students nearby",
-            },
-            {
               icon: "💰",
               title: "Student Prices",
-              description: "Affordable rates designed for student budgets",
-            },
-            {
-              icon: "🔒",
-              title: "Secure Storage",
-              description: "Verified GT student hosts and secure locations",
-            },
-            {
-              icon: "📱",
-              title: "Easy Booking",
-              description: "Simple booking process and flexible schedules",
+              description: "Affordable rates designed for student budgets with discounts and group packages",
             },
             {
               icon: "🤝",
-              title: "Student Community",
-              description: "Connect with fellow GT students for storage solutions",
+              title: "GT Community",
+              description: "Tailored for Georgia Tech students by Georgia Tech students",
+            },
+            {
+              icon: "✅",
+              title: "All Inclusive",
+              description: "Will take care of the entire process from packing to storage to signing out your room",
             },
             {
               icon: "⚡",
               title: "Flexible Options",
-              description: "Choose from various service levels to match your needs",
+              description: "Choose from various service levels to match your specific wants and needs",
+            },
+            {
+              icon: "📱",
+              title: "Easy Booking",
+              description: "Simple booking process and flexible schedule options",
+            },
+            {
+              icon: "🏠",
+              title: "Local Storage",
+              description: "Nearby storage in case of any last-minute plans or changes",
             },
           ].map((feature, index) => (
             <div key={index} className="feature-card">

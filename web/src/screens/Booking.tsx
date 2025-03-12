@@ -15,7 +15,6 @@ const Booking = () => {
     specialInstructions: "",
   });
 
-  // Redirect if not logged in or no booking state
   React.useEffect(() => {
     if (!user || !bookingState) {
       navigate("/pricing");
@@ -29,7 +28,12 @@ const Booking = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Booking submitted:", { ...formData, plan: bookingState });
-    // Handle booking submission
+
+    alert("Booking confirmed! 🎉");
+
+    setTimeout(() => {
+      navigate("/home");
+    }, 2000);
   };
 
   return (

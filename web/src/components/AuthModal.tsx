@@ -15,7 +15,17 @@ const AuthModal: React.FC<AuthModalProps> = ({ type: initialType, onClose, onSuc
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would validate and authenticate with a backend
+
+    if (!email.endsWith("@gatech.edu")) {
+      alert("Please enter a valid Georgia Tech email address (@gatech.edu).");
+      return;
+    }
+
+    if (password.length < 8) {
+      alert("Password must be at least 8 characters long.");
+      return;
+    }
+
     login(email);
     onClose();
     onSuccess?.();

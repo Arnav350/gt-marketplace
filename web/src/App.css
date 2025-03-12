@@ -884,21 +884,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.team-section {
-  margin-top: 4rem;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.team-member {
-  text-align: center;
-}
-
 .placeholder-image {
   width: 120px;
   height: 120px;
@@ -922,8 +907,7 @@ body {
     display: flex;
   }
 
-  .about-grid,
-  .team-grid {
+  .about-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }

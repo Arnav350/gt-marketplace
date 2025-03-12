@@ -25,7 +25,7 @@ const Pricing = () => {
     },
     {
       name: "Secure Store",
-      price: "$250",
+      price: "$325",
       description: "Ideal for pre-packed items needing storage over break",
       features: [
         "Pickup from your location",
@@ -40,7 +40,7 @@ const Pricing = () => {
     },
     {
       name: "Full Move",
-      price: "$350",
+      price: "$425",
       description: "Complete end-to-end solution",
       features: [
         "Professional packing service",
@@ -95,7 +95,7 @@ const Pricing = () => {
             <h2>{plan.name}</h2>
             <div className="price">
               ~{plan.price}
-              {!plan.isCustom && <span className="price-period">/semester</span>}
+              {!plan.isCustom && <span className="price-period">/year</span>}
             </div>
             <p className="plan-description">{plan.description}</p>
             <ul className="feature-list">

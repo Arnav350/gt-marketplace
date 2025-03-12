@@ -23,10 +23,9 @@ const AboutUs = () => {
             fostering a supportive community of students helping students.
           </p>
         </div>
-
         <div className="about-grid">
           <div className="about-stat">
-            <h3>500+</h3>
+            <h3>100+</h3>
             <p>Students Served</p>
           </div>
           <div className="about-stat">
@@ -38,37 +37,9 @@ const AboutUs = () => {
             <p>Support</p>
           </div>
         </div>
-
-        <div className="team-section">
-          <h2>Our Team</h2>
-          <div className="team-grid">
-            {[
-              {
-                name: "Alex Johnson",
-                role: "Founder & CEO",
-                image: "/team/alex.jpg",
-              },
-              {
-                name: "Sarah Chen",
-                role: "Operations Director",
-                image: "/team/sarah.jpg",
-              },
-              {
-                name: "Marcus Rodriguez",
-                role: "Customer Success",
-                image: "/team/marcus.jpg",
-              },
-            ].map((member) => (
-              <div key={member.name} className="team-member">
-                <div className="member-image">
-                  {/* Placeholder for now - replace with actual images */}
-                  <div className="placeholder-image">{member.name[0]}</div>
-                </div>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </div>
-            ))}
-          </div>
+        <div className="about-section">
+          <h2>Contact</h2>
+          <p>Phone Number: 407-574-7000</p>
         </div>
       </section>
     </div>
