@@ -527,6 +527,7 @@ body {
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  text-align: left;
   gap: 0.5rem;
 }
 

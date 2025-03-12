@@ -11,7 +11,7 @@ const Pricing = () => {
   const plans = [
     {
       name: "PackUp",
-      price: "$50",
+      price: "$80",
       description: "Perfect for students who need help packing and unpacking",
       features: [
         "Professional packing assistance",
@@ -21,11 +21,12 @@ const Pricing = () => {
         "2-hour service window",
       ],
       recommended: false,
+      isCustom: false,
     },
     {
-      name: "Transport + Storage",
-      price: "$150",
-      description: "Ideal for pre-packed items needing storage",
+      name: "Secure Store",
+      price: "$250",
+      description: "Ideal for pre-packed items needing storage over break",
       features: [
         "Pickup from your location",
         "Secure storage facility",
@@ -35,10 +36,11 @@ const Pricing = () => {
         "Online storage tracking",
       ],
       recommended: true,
+      isCustom: false,
     },
     {
-      name: "Everything",
-      price: "$200",
+      name: "Full Move",
+      price: "$350",
       description: "Complete end-to-end solution",
       features: [
         "Professional packing service",
@@ -50,9 +52,10 @@ const Pricing = () => {
         "Premium insurance coverage",
       ],
       recommended: false,
+      isCustom: false,
     },
     {
-      name: "Custom",
+      name: "Custom Plan",
       price: "Variable",
       description: "Build your perfect storage solution",
       features: [
@@ -91,7 +94,7 @@ const Pricing = () => {
             {plan.recommended && <div className="recommended-badge">Most Popular</div>}
             <h2>{plan.name}</h2>
             <div className="price">
-              {plan.price}
+              ~{plan.price}
               {!plan.isCustom && <span className="price-period">/semester</span>}
             </div>
             <p className="plan-description">{plan.description}</p>
