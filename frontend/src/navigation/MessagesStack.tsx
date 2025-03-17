@@ -1,11 +1,13 @@
 import { createStackNavigator } from "@react-navigation/stack";
+
 import MessagesScreen from "../screens/messages/MessagesScreen";
 import ChatScreen from "../screens/messages/ChatScreen";
 import PaymentScreen from "../screens/messages/PaymentScreen";
 import DeliveryScreen from "../screens/messages/DeliveryScreen";
 import SummaryScreen from "../screens/messages/SummaryScreen";
+import { TMessagesStackParamsList } from "../constants/types";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<TMessagesStackParamsList>();
 
 const MessagesStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>

@@ -3,15 +3,20 @@ import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import AppText from "../common/AppText";
 import { COLORS, SIZES } from "../../constants/theme";
+import { TMessagesStackParamsList } from "../../constants/types";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 type TProps = {
+  navigation: StackNavigationProp<TMessagesStackParamsList, "Messages">;
   name: string;
   last: string;
   date: string;
 };
 
-const UserCard = ({ name, last, date }: TProps) => {
-  function handlePress() {}
+const UserCard = ({ navigation, name, last, date }: TProps) => {
+  function handlePress() {
+    navigation.navigate("Chat", { userId: name });
+  }
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>

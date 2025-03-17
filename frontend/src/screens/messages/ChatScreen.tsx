@@ -15,27 +15,66 @@ import { StackScreenProps } from "@react-navigation/stack";
 
 import AppText from "../../components/common/AppText";
 import { COLORS, SIZES, WEIGHTS } from "../../constants/theme";
-import { TMessagesStackParamsList } from "../../constants/types";
+import { TMessagesStackParamsList, TMessage } from "../../constants/types";
+import MessageBubble from "../../components/messages/MessageBubble";
 
 type TProps = StackScreenProps<TMessagesStackParamsList, "Chat">;
-type MessageType = {
-  id: string;
-  text?: string;
-  image?: string;
-  file?: { name: string; type: string; size: string };
-  isUser: boolean;
-  timestamp: string;
-};
 
-const ChatScreen = ({ navigation }: TProps) => {
+const ChatScreen = ({ navigation, route }: TProps) => {
+  const { userId } = route.params;
+  const currentUser = { id: "1" };
+
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<MessageType[]>([
-    { id: "1", text: "Hi there! How can I help you?", isUser: false, timestamp: "10:30 AM" },
-    { id: "2", text: "I'm interested in your calculator", isUser: true, timestamp: "10:32 AM" },
-    { id: "3", text: "Is it still available?", isUser: true, timestamp: "10:32 AM" },
-    { id: "4", text: "Yes, it's still available! When would you like to meet?", isUser: false, timestamp: "10:35 AM" },
-    { id: "5", image: "https://picsum.photos/200", isUser: true, timestamp: "10:36 AM" },
-    { id: "6", file: { name: "assignment.pdf", type: "PDF", size: "2.3 MB" }, isUser: false, timestamp: "10:40 AM" },
+  const [messages, setMessages] = useState<TMessage[]>([
+    {
+      id: "1",
+      sender_id: currentUser.id,
+      receiver_id: userId,
+      format: "Text",
+      content: "Hi there! How can I help you?",
+      created_at: new Date("2024-03-15T10:30:00"),
+    },
+    {
+      id: "2",
+      sender_id: userId,
+      receiver_id: currentUser.id,
+      format: "Text",
+      content: "I'm interested in your calculator",
+      created_at: new Date("2024-03-15T10:32:00"),
+    },
+    {
+      id: "3",
+      sender_id: userId,
+      receiver_id: currentUser.id,
+      format: "Text",
+      content: "Is it still available?",
+      created_at: new Date("2024-03-15T10:34:00"),
+    },
+    {
+      id: "4",
+      sender_id: currentUser.id,
+      receiver_id: userId,
+      format: "Text",
+      content:
+        "Yes, it's still available! When would you like to meet? This is going to be a long message so that I can test out how the spacing of the overall message works. I am just realizing now that I will probably need to add a word limit to each of these messages.",
+      created_at: new Date("2024-03-15T10:36:00"),
+    },
+    {
+      id: "5",
+      sender_id: userId,
+      receiver_id: currentUser.id,
+      format: "Image",
+      content: "https://picsum.photos/200",
+      created_at: new Date("2024-03-15T10:38:00"),
+    },
+    {
+      id: "6",
+      sender_id: currentUser.id,
+      receiver_id: userId,
+      format: "File",
+      content: "assignment.pdf",
+      created_at: new Date("2024-03-15T10:40:00"),
+    },
   ]);
 
   const flatListRef = useRef<FlatList>(null);
@@ -43,17 +82,18 @@ const ChatScreen = ({ navigation }: TProps) => {
   const handleSend = () => {
     if (message.trim() === "") return;
 
-    const newMessage: MessageType = {
+    const newMessage: TMessage = {
       id: Date.now().toString(),
-      text: message,
-      isUser: true,
-      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      sender_id: "current_user_id",
+      receiver_id: userId,
+      format: "Text",
+      content: message,
+      created_at: new Date(),
     };
 
     setMessages([...messages, newMessage]);
     setMessage("");
 
-    // Scroll to bottom
     setTimeout(() => {
       flatListRef.current?.scrollToEnd({ animated: true });
     }, 200);
@@ -63,50 +103,12 @@ const ChatScreen = ({ navigation }: TProps) => {
     navigation.goBack();
   };
 
-  const renderMessage = ({ item }: { item: MessageType }) => {
-    return (
-      <View style={[styles.messageContainer, item.isUser ? styles.userMessageContainer : styles.otherMessageContainer]}>
-        {item.text && (
-          <View style={[styles.messageBubble, item.isUser ? styles.userBubble : styles.otherBubble]}>
-            <AppText style={item.isUser ? styles.userMessageText : styles.otherMessageText}>{item.text}</AppText>
-          </View>
-        )}
-
-        {item.image && (
-          <View style={[styles.messageBubble, item.isUser ? styles.userBubble : styles.otherBubble]}>
-            <Image source={{ uri: item.image }} style={styles.messageImage} />
-          </View>
-        )}
-
-        {item.file && (
-          <View style={[styles.messageBubble, styles.fileBubble, item.isUser ? styles.userBubble : styles.otherBubble]}>
-            <MaterialCommunityIcons
-              name="file-document-outline"
-              size={24}
-              color={item.isUser ? COLORS.white : COLORS.black}
-            />
-            <View style={styles.fileInfo}>
-              <AppText style={[styles.fileName, item.isUser && styles.userMessageText]}>{item.file.name}</AppText>
-              <AppText style={[styles.fileType, item.isUser && styles.userMessageText]}>
-                {item.file.type} · {item.file.size}
-              </AppText>
-            </View>
-          </View>
-        )}
-
-        <AppText style={styles.timestamp}>{item.timestamp}</AppText>
-      </View>
-    );
-  };
-
   return (
     <SafeAreaView edges={["top", "right", "left"]} style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={handleBackPress} style={styles.backButton}>
           <MaterialCommunityIcons name="chevron-left" color={COLORS.black} size={32} />
         </TouchableOpacity>
-
         <View style={styles.userInfoContainer}>
           <Image source={{ uri: "https://picsum.photos/200" }} style={styles.avatar} />
           <View>
@@ -123,7 +125,7 @@ const ChatScreen = ({ navigation }: TProps) => {
       <FlatList
         ref={flatListRef}
         data={messages}
-        renderItem={renderMessage}
+        renderItem={({ item }) => <MessageBubble message={item} />}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.messagesContainer}
         showsVerticalScrollIndicator={false}
@@ -216,63 +218,6 @@ const styles = StyleSheet.create({
   messagesContainer: {
     padding: 16,
     paddingBottom: 12,
-  },
-  messageContainer: {
-    marginVertical: 6,
-    maxWidth: "80%",
-  },
-  userMessageContainer: {
-    alignSelf: "flex-end",
-  },
-  otherMessageContainer: {
-    alignSelf: "flex-start",
-  },
-  messageBubble: {
-    borderRadius: 16,
-    padding: 12,
-    maxWidth: "100%",
-  },
-  userBubble: {
-    backgroundColor: COLORS.primary,
-    borderBottomRightRadius: 4,
-  },
-  otherBubble: {
-    backgroundColor: COLORS.smallGray,
-    borderBottomLeftRadius: 4,
-  },
-  userMessageText: {
-    color: COLORS.white,
-  },
-  otherMessageText: {
-    color: COLORS.black,
-  },
-  messageImage: {
-    width: 200,
-    height: 150,
-    borderRadius: 8,
-  },
-  fileBubble: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-  },
-  fileInfo: {
-    marginLeft: 8,
-  },
-  fileName: {
-    fontFamily: WEIGHTS.medium,
-    fontSize: SIZES.small,
-  },
-  fileType: {
-    fontSize: SIZES.tiny,
-    color: COLORS.textGray,
-  },
-  timestamp: {
-    fontSize: 10,
-    color: COLORS.textGray,
-    marginTop: 4,
-    alignSelf: "flex-end",
   },
   inputContainer: {
     flexDirection: "row",

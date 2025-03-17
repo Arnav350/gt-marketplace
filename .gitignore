@@ -3,10 +3,17 @@
 __pycache__/
 .DS_Store
 
+# Admin (React)
+admin/node_modules/
+admin/build/
+admin/.next/
+admin/package-lock.json
+admin/.env/
+
 # Web (React)
 web/node_modules/
-frontend/build/
-frontend/.next/
+web/build/
+web/.next/
 web/package-lock.json
 web/.env/
 

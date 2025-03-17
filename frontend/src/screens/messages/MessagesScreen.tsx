@@ -14,10 +14,6 @@ import PrimaryButton from "../../components/common/PrimaryButton";
 type TProps = StackScreenProps<TMessagesStackParamsList, "Messages">;
 
 const MessagesScreen = ({ navigation }: TProps) => {
-  const user = {
-    id: "1",
-  };
-
   const users = [
     {
       name: "Arnav Patel",
@@ -72,13 +68,15 @@ const MessagesScreen = ({ navigation }: TProps) => {
                 No matches found for '<AppText style={styles.searched}>Arnav Patel</AppText>'
               </AppText>
               <AppText style={styles.subheader}>More Chats</AppText>
-              <UserCard name={users[0].name} last={users[0].last} date={users[0].date} />
-              <UserCard name={users[0].name} last={users[0].last} date={users[0].date} />
-              <UserCard name={users[0].name} last={users[0].last} date={users[0].date} />
+              <UserCard name={users[0].name} last={users[0].last} date={users[0].date} navigation={navigation} />
+              <UserCard name={users[0].name} last={users[0].last} date={users[0].date} navigation={navigation} />
+              <UserCard name={users[0].name} last={users[0].last} date={users[0].date} navigation={navigation} />
             </View>
           )
         }
-        renderItem={({ item }) => <UserCard name={item.name} last={item.last} date={item.date} />}
+        renderItem={({ item }) => (
+          <UserCard name={item.name} last={item.last} date={item.date} navigation={navigation} />
+        )}
       />
     </SafeAreaView>
   );
